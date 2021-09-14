@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OpenWrt LuCI Bootstrap - dark
 @namespace      github.com/teohhanhui
-@version        0.1.1
+@version        0.1.2
 @description    A userstyle to make OpenWrt LuCI's (default) Bootstrap theme dark
 @author         Teoh Han Hui <teohhanhui@gmail.com>
 @homepageURL    https://github.com/teohhanhui/openwrt-luci-bootstrap-dark
@@ -31,6 +31,12 @@ domain("192.168.1.1") {
     color: #fff;
   }
 
+  /* L235 */
+  pre {
+    background-color: #2a2a2a;
+    border-color: rgba(34, 34, 34, 0.15);
+  }
+
   /* L281 */
   .cbi-value label.cbi-value-title {
     color: #fff;
@@ -39,14 +45,14 @@ domain("192.168.1.1") {
   /* L459 */
   .actions,
   .cbi-page-actions {
-    background: #2a2a2a;
-    border-top: 1px solid #444;
+    background-color: #2a2a2a;
+    border-top-color: #444;
   }
 
   /* L525 */
   .table .td,
   .table .th {
-    border-top: 1px solid #444;
+    border-top-color: #444;
   }
 
   /* L749 */
@@ -57,12 +63,12 @@ domain("192.168.1.1") {
 
   /* L851 */
   footer {
-    border-top: 1px solid #333;
+    border-top-color: #333;
   }
 
   /* L1192 */
   .cbi-progressbar {
-    border: 1px solid #555;
+    border-color: #555;
     background: #282828;
   }
 
@@ -82,20 +88,20 @@ domain("192.168.1.1") {
   .cbi-rowstyle-2,
   .tr.table-titles,
   .tr.cbi-section-table-titles {
-    background: #282828;
+    background-color: #282828;
   }
 
   /* L1439 */
   .ifacebox {
     background-color: #222;
-    border: 1px solid #555;
+    border-color: #555;
     background-image: linear-gradient(#222, #222 25%, #282828);
     text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);
   }
 
   /* L1454 */
   .ifacebox .ifacebox-head {
-    border-bottom: 1px solid #555;
+    border-bottom-color: #555;
     color: #404040;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   }
@@ -103,7 +109,7 @@ domain("192.168.1.1") {
   /* L1465 */
   .ifacebadge {
     background-color: #222;
-    border: 1px solid #555;
+    border-color: #555;
     background-image: linear-gradient(#222, #222 25%, #282828);
     text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);
   }
@@ -111,7 +117,7 @@ domain("192.168.1.1") {
   /* L1933 */
   .modal,
   #modal_overlay > .modal {
-    background: #222;
+    background-color: #222;
   }
 
 
@@ -127,14 +133,7 @@ domain("192.168.1.1") {
 
     /* L29 */
     .tr {
-      border-top: 1px solid #444;
-    }
-
-    /* L38 */
-    .table .th,
-    .table .td,
-    .table .tr::before {
-      border-top: none;
+      border-top-color: #444;
     }
   }
 }
