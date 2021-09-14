@@ -1,9 +1,13 @@
 /* ==UserStyle==
 @name           OpenWrt LuCI Bootstrap - dark
-@namespace      github.com/teohhanhui/openwrt-luci-bootstrap-dark
+@namespace      github.com/teohhanhui
 @version        0.1.0
 @description    A userstyle to make OpenWrt LuCI's (default) Bootstrap theme dark
 @author         Teoh Han Hui <teohhanhui@gmail.com>
+@homepageURL    https://github.com/teohhanhui/openwrt-luci-bootstrap-dark
+@supportURL     https://github.com/teohhanhui/openwrt-luci-bootstrap-dark/issues
+@updateURL      https://github.com/teohhanhui/openwrt-luci-bootstrap-dark/raw/main/openwrt-luci-bootstrap-dark.user.css
+@license        Apache-2.0
 ==/UserStyle== */
 @-moz-document domain("openwrt.lan"),
 domain("192.168.1.1") {
