@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OpenWrt LuCI Bootstrap - dark
 @namespace      github.com/teohhanhui
-@version        0.1.2
+@version        0.1.3
 @description    A userstyle to make OpenWrt LuCI's (default) Bootstrap theme dark
 @author         Teoh Han Hui <teohhanhui@gmail.com>
 @homepageURL    https://github.com/teohhanhui/openwrt-luci-bootstrap-dark
@@ -20,6 +20,11 @@ domain("192.168.1.1") {
     color: #fff;
   }
 
+  /* L126 */
+  p small {
+    color: #808080;
+  }
+
   /* L130 */
   h1,
   h2,
@@ -31,10 +36,30 @@ domain("192.168.1.1") {
     color: #fff;
   }
 
+  /* L162 */
+  h6 {
+    color: #808080;
+  }
+
+  /* L183 */
+  li {
+    color: #bfbfbf;
+  }
+
+  /* L201 */
+  hr {
+    border-bottom-color: #333;
+  }
+
   /* L235 */
   pre {
-    background-color: #2a2a2a;
+    background-color: #2c2c2c;
     border-color: rgba(34, 34, 34, 0.15);
+  }
+
+  /* L251 */
+  fieldset legend {
+    color: #fff;
   }
 
   /* L281 */
@@ -42,10 +67,15 @@ domain("192.168.1.1") {
     color: #fff;
   }
 
+  /* L345 */
+  .cbi-dynlist > .item {
+    color: #404040;
+  }
+
   /* L459 */
   .actions,
   .cbi-page-actions {
-    background-color: #2a2a2a;
+    background-color: #2c2c2c;
     border-top-color: #444;
   }
 
@@ -61,15 +91,41 @@ domain("192.168.1.1") {
     background-image: linear-gradient(#222 28px, #444 28px);
   }
 
+  /* L760 */
+  .tabs > li,
+  .cbi-tabmenu > li {
+    background-color: #222;
+    border-color: #444;
+  }
+
+  /* L786 */
+  .tabs > li:not(.active):hover,
+  .cbi-tabmenu > .cbi-tab-disabled:hover {
+    background: linear-gradient(#222 90%, #444 100%);
+  }
+
+  /* L790 */
+  .tabs > li:not(.active),
+  .cbi-tabmenu > .cbi-tab-disabled {
+    color: #888;
+    background: linear-gradient(#333 90%, #444 100%);
+  }
+
   /* L851 */
   footer {
     border-top-color: #333;
   }
 
+  /* L1175 */
+  .cbi-tooltip {
+    box-shadow: 0 0 2px #555;
+    background-color: #222;
+  }
+
   /* L1192 */
   .cbi-progressbar {
     border-color: #555;
-    background: #282828;
+    background-color: #282828;
   }
 
   /* L1207 */
@@ -77,11 +133,23 @@ domain("192.168.1.1") {
     text-shadow: 0 0 2px #222;
   }
 
+  /* L1220 */
+  .zonebadge .cbi-tooltip {
+    box-shadow: 0 0 3px #ddd;
+  }
+
   /* L1349 */
   .cbi-section-table .tr:hover .td,
   .cbi-section-table .tr:hover .th,
   .cbi-section-table .tr:hover::before {
-    background-color: #2a2a2a;
+    background-color: #2c2c2c;
+  }
+
+  /* L1357 */
+  .cbi-section-table-titles.named::before,
+  .cbi-section-table-descr.named::before,
+  .cbi-section-table-row[data-title]::before {
+    border-top-color: #444;
   }
 
   /* L1415 */
@@ -95,6 +163,7 @@ domain("192.168.1.1") {
   .ifacebox {
     background-color: #222;
     border-color: #555;
+    background-image: none;
     background-image: linear-gradient(#222, #222 25%, #282828);
     text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);
   }
@@ -110,14 +179,43 @@ domain("192.168.1.1") {
   .ifacebadge {
     background-color: #222;
     border-color: #555;
+    background-image: none;
     background-image: linear-gradient(#222, #222 25%, #282828);
     text-shadow: 0 1px 1px rgba(34, 34, 34, 0.75);
+    box-shadow: inset 0 1px 0 rgba(34, 34, 34, 0.2), 0 1px 2px rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  /* L1549 */
+  .zonebadge > .ifacebadge {
+    color: #bbb;
+  }
+
+  /* L1584 */
+  .uci-change-list del,
+  .uci-change-list ins,
+  .uci-change-list var,
+  .uci-change-legend-label del,
+  .uci-change-legend-label ins,
+  .uci-change-legend-label var {
+    color: #404040;
+  }
+
+  /* L1806 */
+  h1 small,
+  h2 small,
+  h3 small,
+  h4 small,
+  h5 small,
+  h6 small {
+    color: #808080;
   }
 
   /* L1933 */
   .modal,
   #modal_overlay > .modal {
     background-color: #222;
+    box-shadow: 0 0 3px #ddd;
   }
 
 
@@ -134,6 +232,12 @@ domain("192.168.1.1") {
     /* L29 */
     .tr {
       border-top-color: #444;
+    }
+
+    /* L123 */
+    .tr[data-title]::before {
+      background-color: #282828 !important;
+      border-bottom-color: #444;
     }
   }
 }
