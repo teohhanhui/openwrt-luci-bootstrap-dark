@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OpenWrt LuCI Bootstrap - dark
 @namespace      github.com/teohhanhui
-@version        0.1.4
+@version        0.2.0
 @description    A userstyle to make OpenWrt LuCI's (default) Bootstrap theme dark
 @author         Teoh Han Hui <teohhanhui@gmail.com>
 @homepageURL    https://github.com/teohhanhui/openwrt-luci-bootstrap-dark
@@ -14,15 +14,78 @@ domain("192.168.1.1") {
   /*
    * cascade.css
    */
+  :root {
+    --background-color-delta-l-sign: -1;
+    --background-color-high-h: 0;
+    --background-color-high-s: 0%;
+    --background-color-high-l: 100%;
+    --background-color-high: hsl(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l));
+    --background-color-medium-h: var(--background-color-high-h);
+    --background-color-medium-s: var(--background-color-high-s);
+    --background-color-medium-delta-l: calc(6 / 255 * 100%);
+    --background-color-medium-l: calc(var(--background-color-high-l) + var(--background-color-delta-l-sign) * var(--background-color-medium-delta-l));
+    --background-color-medium: hsl(var(--background-color-medium-h), var(--background-color-medium-s), var(--background-color-medium-l));
+    --background-color-low-h: var(--background-color-high-h);
+    --background-color-low-s: var(--background-color-high-s);
+    --background-color-low-delta-l: calc(10 / 255 * 100%);
+    --background-color-low-l: calc(var(--background-color-high-l) + var(--background-color-delta-l-sign) * var(--background-color-low-delta-l));
+    --background-color-low: hsl(var(--background-color-low-h), var(--background-color-low-s), var(--background-color-low-l));
+    --text-color-delta-l-sign: 1;
+    --text-color-high-h: 0;
+    --text-color-high-s: 0%;
+    --text-color-high-l: calc(64 / 255 * 100%);
+    --text-color-high: hsl(var(--text-color-high-h), var(--text-color-high-s), var(--text-color-high-l));
+    --text-color-medium-h: var(--text-color-high-h);
+    --text-color-medium-s: var(--text-color-high-s);
+    --text-color-medium-delta-l: calc(64 / 255 * 100%);
+    --text-color-medium-l: calc(var(--text-color-high-l) + var(--text-color-delta-l-sign) * var(--text-color-medium-delta-l));
+    --text-color-medium: hsl(var(--text-color-medium-h), var(--text-color-medium-s), var(--text-color-medium-l));
+    --text-color-low-h: var(--text-color-high-h);
+    --text-color-low-s: var(--text-color-high-s);
+    --text-color-low-delta-l: calc(127 / 255 * 100%);
+    --text-color-low-l: calc(var(--text-color-high-l) + var(--text-color-delta-l-sign) * var(--text-color-low-delta-l));
+    --text-color-low: hsl(var(--text-color-low-h), var(--text-color-low-s), var(--text-color-low-l));
+    --border-color-delta-l-sign: -1;
+    --border-color-high-h: var(--background-color-high-h);
+    --border-color-high-s: var(--background-color-high-s);
+    --border-color-high-delta-l: calc(51 / 255 * 100%);
+    --border-color-high-l: calc(var(--background-color-high-l) + var(--border-color-delta-l-sign) * var(--border-color-high-delta-l));
+    --border-color-high: hsl(var(--border-color-high-h), var(--border-color-high-s), var(--border-color-high-l));
+    --border-color-medium-h: var(--border-color-high-h);
+    --border-color-medium-s: var(--border-color-high-s);
+    --border-color-medium-delta-l: calc(34 / 255 * 100%);
+    --border-color-medium-l: calc(var(--background-color-high-l) + var(--border-color-delta-l-sign) * var(--border-color-medium-delta-l));
+    --border-color-medium: hsl(var(--border-color-medium-h), var(--border-color-medium-s), var(--border-color-medium-l));
+    --border-color-low-h: var(--border-color-high-h);
+    --border-color-low-s: var(--border-color-high-s);
+    --border-color-low-delta-l: calc(17 / 255 * 100%);
+    --border-color-low-l: calc(var(--background-color-high-l) + var(--border-color-delta-l-sign) * var(--border-color-low-delta-l));
+    --border-color-low: hsl(var(--border-color-low-h), var(--border-color-low-s), var(--border-color-low-l));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color-delta-l-sign: 1;
+      --background-color-high-h: 0;
+      --background-color-high-s: 0%;
+      --background-color-high-l: calc(34 / 255 * 100%);
+      --text-color-delta-l-sign: -1;
+      --text-color-high-h: 0;
+      --text-color-high-s: 0%;
+      --text-color-high-l: 100%;
+      --border-color-delta-l-sign: 1;
+    }
+  }
+
   /* L84 */
   body {
-    background-color: #222;
-    color: #fff;
+    background-color: var(--background-color-high);
+    color: var(--text-color-high);
   }
 
   /* L126 */
   p small {
-    color: #808080;
+    color: var(--text-color-low);
   }
 
   /* L130 */
@@ -33,37 +96,45 @@ domain("192.168.1.1") {
   h4,
   h5,
   h6 {
-    color: #fff;
+    color: var(--text-color-high);
   }
 
   /* L162 */
   h6 {
-    color: #808080;
+    color: var(--text-color-low);
   }
 
   /* L183 */
   li {
-    color: #bfbfbf;
+    color: var(--text-color-medium);
   }
 
   /* L201 */
   hr {
-    border-bottom-color: #333;
+    border-bottom-color: var(--border-color-low);
   }
 
   /* L235 */
   pre {
-    background-color: #2c2c2c;
+    --border-color-h: var(--background-color-high-h);
+    --border-color-s: var(--background-color-high-s);
+    --border-color-delta-l: 100%;
+    --border-color-l: calc(var(--background-color-high-l) + var(--background-color-delta-l-sign) * var(--border-color-delta-l));
+    --border-color-a: 0.15;
+    --border-color: hsla(var(--border-color-h), var(--border-color-s), var(--border-color-l), var(--border-color-a));
+
+    background-color: var(--background-color-low);
+    border-color: var(--border-color);
   }
 
   /* L251 */
   fieldset legend {
-    color: #fff;
+    color: var(--text-color-high);
   }
 
   /* L281 */
   .cbi-value label.cbi-value-title {
-    color: #fff;
+    color: var(--text-color-high);
   }
 
   /* L345 */
@@ -74,115 +145,150 @@ domain("192.168.1.1") {
   /* L459 */
   .actions,
   .cbi-page-actions {
-    background-color: #2c2c2c;
-    border-top-color: #444;
+    background-color: var(--background-color-low);
+    border-top-color: var(--border-color-medium);
+  }
+
+  /* L480 */
+  .help-inline,
+  .help-block {
+    color: var(--text-color-low);
   }
 
   /* L525 */
   .table .td,
   .table .th {
-    border-top-color: #444;
+    border-top-color: var(--border-color-medium);
   }
 
   /* L749 */
   .tabs,
   .cbi-tabmenu {
-    background-image: linear-gradient(#222 28px, #444 28px);
+    --tab-bar-background-color: var(--background-color-high);
+    --tab-inactive-background-color-h: var(--border-color-low-h);
+    --tab-inactive-background-color-s: var(--border-color-low-s);
+    --tab-inactive-background-color-l: var(--border-color-low-l);
+    --tab-inactive-background-color: var(--border-color-low);
+    --tab-inactive-border-color: var(--border-color-medium);
+    --tab-inactive-text-color-delta-l: calc(85 / 255 * 100%);
+    --tab-inactive-text-color-l: calc(var(--tab-inactive-background-color-l) + var(--background-color-delta-l-sign) * var(--tab-inactive-text-color-delta-l));
+    --tab-inactive-text-color: hsl(var(--tab-inactive-background-color-h), var(--tab-inactive-background-color-s), var(--tab-inactive-text-color-l));
+    --tab-inactive-hover-background-color: var(--background-color-high);
+    --tab-active-background-color: var(--background-color-high);
+    --tab-active-text-color: #0069d6;
+    --tab-active-border-color: var(--border-color-medium);
+
+    background-image: linear-gradient(var(--tab-bar-background-color) 28px, var(--tab-inactive-border-color) 28px);
   }
 
   /* L760 */
   .tabs > li,
   .cbi-tabmenu > li {
-    background-color: #222;
-    border-color: #444;
+    background-color: var(--tab-active-background-color);
+    border-color: var(--tab-active-border-color);
+    color: var(--tab-active-text-color);
   }
 
   /* L786 */
   .tabs > li:not(.active):hover,
   .cbi-tabmenu > .cbi-tab-disabled:hover {
-    background: linear-gradient(#222 90%, #444 100%);
+    background: linear-gradient(var(--tab-inactive-hover-background-color) 90%, var(--tab-inactive-border-color) 100%);
   }
 
   /* L790 */
   .tabs > li:not(.active),
   .cbi-tabmenu > .cbi-tab-disabled {
-    color: #888;
-    background: linear-gradient(#333 90%, #444 100%);
+    color: var(--tab-inactive-text-color);
+    background: linear-gradient(var(--tab-inactive-background-color) 90%, var(--tab-inactive-border-color) 100%);
   }
 
   /* L851 */
   footer {
-    border-top-color: #333;
+    border-top-color: var(--border-color-low);
+  }
+
+  /* L914 */
+  .modal.alert-message.notice {
+    color: var(--text-color-high);
   }
 
   /* L1175 */
   .cbi-tooltip {
-    background-color: #222;
+    box-shadow: 0 0 2px var(--border-color-high);
+    background-color: var(--background-color-high);
   }
 
   /* L1192 */
   .cbi-progressbar {
-    border-color: #555;
-    background-color: #282828;
+    border-color: var(--border-color-high);
+    background-color: var(--background-color-medium);
   }
 
   /* L1207 */
   .cbi-progressbar::after {
-    text-shadow: 0 0 2px #222;
-    mix-blend-mode: difference;
+    text-shadow: 0 0 2px var(--background-color-high);
+  }
+  @media (prefers-color-scheme: dark) {
+    .cbi-progressbar::after {
+      mix-blend-mode: difference;
+    }
   }
 
   /* L1349 */
   .cbi-section-table .tr:hover .td,
   .cbi-section-table .tr:hover .th,
   .cbi-section-table .tr:hover::before {
-    background-color: #2c2c2c;
+    background-color: var(--background-color-low);
   }
 
   /* L1357 */
   .cbi-section-table-titles.named::before,
   .cbi-section-table-descr.named::before,
   .cbi-section-table-row[data-title]::before {
-    border-top-color: #444;
+    border-top-color: var(--border-color-medium);
   }
 
   /* L1415 */
   .cbi-rowstyle-2,
   .tr.table-titles,
   .tr.cbi-section-table-titles {
-    background-color: #282828;
+    background-color: var(--background-color-medium);
   }
 
   /* L1439 */
   .ifacebox {
-    border-color: #555;
-    background-image: linear-gradient(#222, #222 25%, #282828);
-    text-shadow: none;
+    background-color: var(--background-color-high);
+    border-color: var(--border-color-high);
+    background-image: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
+    text-shadow: 0 1px 1px hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
   }
 
   /* L1454 */
   .ifacebox .ifacebox-head {
-    border-bottom-color: #555;
+    border-bottom-color: var(--border-color-high);
     color: #404040;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   }
 
   /* L1465 */
   .ifacebadge {
-    border-color: #555;
-    background-image: linear-gradient(#222, #222 25%, #282828);
-    text-shadow: none;
-    color: #fff;
-  }
-
-  /* L1549 */
-  .zonebadge > .ifacebadge {
-    color: #bbb;
+    background-color: var(--background-color-high);
+    border-color: var(--border-color-high);
+    background-image: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
+    color: var(--text-color-high);
+    text-shadow: 0 1px 1px hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
   }
 
   /* L1570 */
   div.cbi-value var.cbi-tooltip-container,
   .td.cbi-value-field var.cbi-tooltip-container .cbi-tooltip {
-    color: #fff;
+    --text-color-h: var(--text-color-high-h);
+    --text-color-s: var(--text-color-high-s);
+    --text-color-delta-l: calc(4 / 255 * 100%);
+    --text-color-l: calc(var(--text-color-high-l) + var(--text-color-delta-l-sign) * var(--text-color-delta-l));
+    --text-color: hsl(var(--text-color-h), var(--text-color-s), var(--text-color-l));
+
+    color: var(--text-color);
   }
 
   /* L1584 */
@@ -202,15 +308,14 @@ domain("192.168.1.1") {
   h4 small,
   h5 small,
   h6 small {
-    color: #808080;
+    color: var(--text-color-low);
   }
 
   /* L1933 */
   .modal,
   #modal_overlay > .modal {
-    background-color: #222;
+    background-color: var(--background-color-high);
   }
-
 
   /*
    * mobile.css
@@ -219,18 +324,18 @@ domain("192.168.1.1") {
     /* L9 */
     .tabs,
     .cbi-tabmenu {
-      background-image: linear-gradient(#222 20%, #444 100%);
+      background-image: linear-gradient(var(--background-color-high) 20%, var(--border-color-medium) 100%)
     }
 
     /* L29 */
     .tr {
-      border-top-color: #444;
+      border-top-color: var(--border-color-medium);
     }
 
     /* L123 */
     .tr[data-title]::before {
-      background-color: #282828 !important;
-      border-bottom-color: #444;
+      background-color: var(--background-color-low) !important;
+      border-bottom-color: var(--border-color-medium);
     }
   }
 }
