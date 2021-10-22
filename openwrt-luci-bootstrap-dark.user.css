@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OpenWrt LuCI Bootstrap - dark
 @namespace      github.com/teohhanhui
-@version        0.2.0
+@version        0.3.0
 @description    A userstyle to make OpenWrt LuCI's (default) Bootstrap theme dark
 @author         Teoh Han Hui <teohhanhui@gmail.com>
 @homepageURL    https://github.com/teohhanhui/openwrt-luci-bootstrap-dark
@@ -11,8 +11,10 @@
 ==/UserStyle== */
 @-moz-document domain("openwrt.lan"),
 domain("192.168.1.1") {
-  /*
+  /**
    * cascade.css
+   *
+   * @see https://github.com/openwrt/luci/blob/bd36169e8ca03c3862d312971d958c2965da5ff5/themes/luci-theme-bootstrap/htdocs/luci-static/bootstrap/cascade.css
    */
   :root {
     --background-color-delta-l-sign: -1;
@@ -61,6 +63,8 @@ domain("192.168.1.1") {
     --border-color-low-delta-l: calc(17 / 255 * 100%);
     --border-color-low-l: calc(var(--background-color-high-l) + var(--border-color-delta-l-sign) * var(--border-color-low-delta-l));
     --border-color-low: hsl(var(--border-color-low-h), var(--border-color-low-s), var(--border-color-low-l));
+
+    color-scheme: light dark;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -77,18 +81,18 @@ domain("192.168.1.1") {
     }
   }
 
-  /* L84 */
+  /* L130 */
   body {
     background-color: var(--background-color-high);
     color: var(--text-color-high);
   }
 
-  /* L126 */
+  /* L196 */
   p small {
     color: var(--text-color-low);
   }
 
-  /* L130 */
+  /* L201 */
   h1,
   h2,
   h3,
@@ -99,22 +103,32 @@ domain("192.168.1.1") {
     color: var(--text-color-high);
   }
 
-  /* L162 */
+  /* 211 */
+  h1 small,
+  h2 small,
+  h3 small,
+  h4 small,
+  h5 small,
+  h6 small {
+    color: var(--text-color-low);
+  }
+
+  /* L266 */
   h6 {
     color: var(--text-color-low);
   }
 
-  /* L183 */
+  /* L291 */
   li {
     color: var(--text-color-medium);
   }
 
-  /* L201 */
+  /* L317 */
   hr {
     border-bottom-color: var(--border-color-low);
   }
 
-  /* L235 */
+  /* L355 */
   pre {
     --border-color-h: var(--background-color-high-h);
     --border-color-s: var(--background-color-high-s);
@@ -127,41 +141,79 @@ domain("192.168.1.1") {
     border-color: var(--border-color);
   }
 
-  /* L251 */
+  /* L382 */
   fieldset legend {
     color: var(--text-color-high);
   }
 
-  /* L281 */
+  /* L429 */
   .cbi-value label.cbi-value-title {
     color: var(--text-color-high);
   }
 
-  /* L345 */
-  .cbi-dynlist > .item {
-    color: #404040;
+  /* L449 */
+  input,
+  textarea,
+  select,
+  .cbi-dropdown:not(.btn):not(.cbi-button),
+  .uneditable-input {
+    background: var(--background-color-high);
+    color: var(--text-color-high);
+    border-color: var(--border-color-high);
   }
 
-  /* L459 */
+  /* L488 */
+  .cbi-dynlist > .item {
+    box-shadow: 0 0 2px var(--border-color-high);
+    background: var(--background-color-high);
+    border-color: var(--border-color-high);
+    color: var(--text-color-high);
+  }
+
+  /* L501 */
+  .cbi-dynlist > .item::after {
+    border-color: var(--border-color-high);
+  }
+
+  /* L582 */
+  ::placeholder {
+    color: var(--text-color-low);
+  }
+
+  /* L609 */
+  input[disabled],
+  button[disabled],
+  select[disabled],
+  textarea[disabled],
+  input[readonly],
+  button[readonly],
+  select[readonly],
+  textarea[readonly] {
+    background-color: var(--background-color-medium);
+    color: var(--text-color-medium);
+    border-color: var(--border-color-low);
+  }
+
+  /* L649 */
   .actions,
   .cbi-page-actions {
     background-color: var(--background-color-low);
     border-top-color: var(--border-color-medium);
   }
 
-  /* L480 */
+  /* L679 */
   .help-inline,
   .help-block {
     color: var(--text-color-low);
   }
 
-  /* L525 */
+  /* L718 */
   .table .td,
   .table .th {
     border-top-color: var(--border-color-medium);
   }
 
-  /* L749 */
+  /* L1043 */
   .tabs,
   .cbi-tabmenu {
     --tab-bar-background-color: var(--background-color-high);
@@ -181,7 +233,7 @@ domain("192.168.1.1") {
     background-image: linear-gradient(var(--tab-bar-background-color) 28px, var(--tab-inactive-border-color) 28px);
   }
 
-  /* L760 */
+  /* L1054 */
   .tabs > li,
   .cbi-tabmenu > li {
     background-color: var(--tab-active-background-color);
@@ -189,42 +241,191 @@ domain("192.168.1.1") {
     color: var(--tab-active-text-color);
   }
 
-  /* L786 */
+  /* L1080 */
   .tabs > li:not(.active):hover,
   .cbi-tabmenu > .cbi-tab-disabled:hover {
     background: linear-gradient(var(--tab-inactive-hover-background-color) 90%, var(--tab-inactive-border-color) 100%);
   }
 
-  /* L790 */
+  /* L1084 */
   .tabs > li:not(.active),
   .cbi-tabmenu > .cbi-tab-disabled {
     color: var(--tab-inactive-text-color);
     background: linear-gradient(var(--tab-inactive-background-color) 90%, var(--tab-inactive-border-color) 100%);
   }
 
-  /* L851 */
+  /* L1168 */
   footer {
     border-top-color: var(--border-color-low);
   }
 
-  /* L914 */
-  .modal.alert-message.notice {
+  /* L1189 */
+  .modal {
+    background-color: var(--background-color-high);
+  }
+
+  /* L1276 */
+  .modal.alert-message {
     color: var(--text-color-high);
   }
 
-  /* L1175 */
+  /* L1282 */
+  .item::after,
+  .btn,
+  .cbi-button {
+    background-image: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--border-color-low));
+    text-shadow: 0 1px 1px hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
+    color: var(--text-color-high);
+    border-color: var(--border-color-high);
+    box-shadow: inset 0 1px 0 hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.2), 0 1px 2px hsla(var(--text-color-high-h), var(--text-color-high-s), var(--text-color-high-l), 0.05);
+  }
+
+  /* L1313 */
+  .cbi-button-positive,
+  .cbi-button-fieldadd,
+  .cbi-button-add,
+  .cbi-button-save {
+    color: #4a4;
+    border-color: #4a4;
+  }
+
+  /* L1321 */
+  .cbi-button-neutral,
+  .cbi-button-download,
+  .cbi-button-find,
+  .cbi-button-link,
+  .cbi-button-up,
+  .cbi-button-down {
+    color: var(--text-color-high);
+  }
+
+  /* L1330 */
+  .btn.primary,
+  .cbi-button-action,
+  .cbi-button-apply,
+  .cbi-button-reload,
+  .cbi-button-edit {
+    color: #0069d6;
+    border-color: #0069d6;
+  }
+
+  /* L1339 */
+  .cbi-button-negative,
+  .cbi-section-remove .cbi-button,
+  .cbi-button-reset,
+  .cbi-button-remove {
+    color: #c44;
+    border-color: #c44;
+  }
+
+  /* L1362 */
+  .btn.primary,
+  .cbi-button-action.important,
+  .cbi-page-actions .cbi-button-apply,
+  .cbi-section-actions .cbi-button-edit {
+    color: #fff;
+    background: linear-gradient(to bottom, #0069d6, #0049d6) no-repeat;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  /* L1371 */
+  .cbi-button-positive.important,
+  .cbi-page-actions .cbi-button-save {
+    color: #fff;
+    background: linear-gradient(to bottom, #4a4, #484) no-repeat;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  /* L1378 */
+  .cbi-button-negative.important {
+    color: #fff;
+    background: linear-gradient(to bottom, #c44, #c00) no-repeat;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  /* L1384 */
+  .cbi-page-actions .cbi-button-apply + .cbi-button-save,
+  .cbi-page-actions .cbi-button-negative + .cbi-button-save {
+    background: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--border-color-low));
+    text-shadow: 0 -1px 0 hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
+  }
+
+  /* L1399 */
+  .cbi-dropdown:not(.btn):not(.cbi-button) {
+    background: linear-gradient(var(--background-color-high) 0%, var(--border-color-low) 100%);
+    border-color: var(--border-color-high);
+    color: var(--text-color-high);
+  }
+
+  /* L1454 */
+  .cbi-dropdown > .more,
+  .cbi-dropdown:not(.btn):not(.cbi-button) > ul > li[placeholder] {
+    text-shadow: 1px 1px 0px var(--background-color-high);
+  }
+
+  /* L1475 */
+  .cbi-dropdown > ul.dropdown > li,
+  .cbi-dropdown:not(.btn):not(.cbi-button) > ul > li {
+    color: var(--text-color-high);
+  }
+
+  /* L1485 */
+  .cbi-dropdown > ul > li[display]:not([display="0"]) {
+    border-left-color: var(--border-color-high);
+  }
+
+  /* L1517 */
+  .cbi-dropdown[open] > ul.dropdown {
+    background: var(--background-color-low);
+  }
+
+  /* L1550 */
+  .cbi-dropdown[open] > ul.dropdown > li {
+    border-bottom-color: var(--border-color-high);
+  }
+
+  /* L1554 */
+  .cbi-dropdown[open] > ul.dropdown > li[selected] {
+    color: #404040;
+  }
+
+  /* L1554 */
+  .cbi-dropdown[open]:not(.btn):not(.cbi-button) > ul > li[selected][placeholder] {
+    color: #777;
+    text-shadow: 1px 1px 0px #fff;
+  }
+
+  /* L1558 */
+  .cbi-dropdown[open] > ul.dropdown > li.focus {
+    color: #404040;
+  }
+
+  /* L1558 */
+  .cbi-dropdown[open]:not(.btn):not(.cbi-button) > ul > li.focus[placeholder] {
+    color: #777;
+    text-shadow: 1px 1px 0px #fff;
+  }
+
+  /* L1580 */
+  input[type="text"] + .cbi-button,
+  input[type="password"] + .cbi-button,
+  select + .cbi-button {
+    border-color: var(--border-color-high);
+  }
+
+  /* L1609 */
   .cbi-tooltip {
     box-shadow: 0 0 2px var(--border-color-high);
     background-color: var(--background-color-high);
   }
 
-  /* L1192 */
+  /* L1628 */
   .cbi-progressbar {
     border-color: var(--border-color-high);
     background-color: var(--background-color-medium);
   }
 
-  /* L1207 */
+  /* L1645 */
   .cbi-progressbar::after {
     text-shadow: 0 0 2px var(--background-color-high);
   }
@@ -234,64 +435,57 @@ domain("192.168.1.1") {
     }
   }
 
-  /* L1349 */
+  /* L1835 */
   .cbi-section-table .tr:hover .td,
   .cbi-section-table .tr:hover .th,
   .cbi-section-table .tr:hover::before {
     background-color: var(--background-color-low);
   }
 
-  /* L1357 */
+  /* L1845 */
   .cbi-section-table-titles.named::before,
   .cbi-section-table-descr.named::before,
   .cbi-section-table-row[data-title]::before {
     border-top-color: var(--border-color-medium);
   }
 
-  /* L1415 */
+  /* L1920 */
   .cbi-rowstyle-2,
   .tr.table-titles,
   .tr.cbi-section-table-titles {
     background-color: var(--background-color-medium);
   }
 
-  /* L1439 */
+  /* L1947 */
   .ifacebox {
-    background-color: var(--background-color-high);
     border-color: var(--border-color-high);
-    background-image: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
+    background: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
     text-shadow: 0 1px 1px hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
   }
 
-  /* L1454 */
+  /* L1963 */
   .ifacebox .ifacebox-head {
     border-bottom-color: var(--border-color-high);
     color: #404040;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   }
 
-  /* L1465 */
+  /* L1977 */
   .ifacebadge {
-    background-color: var(--background-color-high);
     border-color: var(--border-color-high);
-    background-image: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
+    background: linear-gradient(var(--background-color-high), var(--background-color-high) 25%, var(--background-color-medium));
     color: var(--text-color-high);
     text-shadow: 0 1px 1px hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.75);
+    box-shadow: inset 0 1px 0 hsla(var(--background-color-high-h), var(--background-color-high-s), var(--background-color-high-l), 0.2), 0 1px 2px hsla(var(--text-color-high-h), var(--text-color-high-s), var(--text-color-high-l), 0.05);
   }
 
-  /* L1570 */
+  /* L2107 */
   div.cbi-value var.cbi-tooltip-container,
   .td.cbi-value-field var.cbi-tooltip-container .cbi-tooltip {
-    --text-color-h: var(--text-color-high-h);
-    --text-color-s: var(--text-color-high-s);
-    --text-color-delta-l: calc(4 / 255 * 100%);
-    --text-color-l: calc(var(--text-color-high-l) + var(--text-color-delta-l-sign) * var(--text-color-delta-l));
-    --text-color: hsl(var(--text-color-h), var(--text-color-s), var(--text-color-l));
-
-    color: var(--text-color);
+    color: var(--text-color-high);
   }
 
-  /* L1584 */
+  /* L2124 */
   .uci-change-list del,
   .uci-change-list ins,
   .uci-change-list var,
@@ -301,40 +495,36 @@ domain("192.168.1.1") {
     color: #404040;
   }
 
-  /* L1806 */
-  h1 small,
-  h2 small,
-  h3 small,
-  h4 small,
-  h5 small,
-  h6 small {
-    color: var(--text-color-low);
-  }
-
-  /* L1933 */
-  .modal,
+  /* L2211 */
   #modal_overlay > .modal {
     background-color: var(--background-color-high);
   }
 
-  /*
+  /**
    * mobile.css
+   *
+   * @see https://github.com/openwrt/luci/blob/bd36169e8ca03c3862d312971d958c2965da5ff5/themes/luci-theme-bootstrap/htdocs/luci-static/bootstrap/mobile.css
    */
   @media screen and (max-device-width: 600px) {
-    /* L9 */
+    /* L10 */
     .tabs,
     .cbi-tabmenu {
       background-image: linear-gradient(var(--background-color-high) 20%, var(--border-color-medium) 100%)
     }
 
-    /* L29 */
+    /* L31 */
     .tr {
       border-top-color: var(--border-color-medium);
     }
 
-    /* L123 */
+    /* L111 */
     .tr[data-title]::before {
       background-color: var(--background-color-low) !important;
+      border-bottom-color: var(--border-color-medium);
+    }
+
+    /* L164 */
+    .cbi-value {
       border-bottom-color: var(--border-color-medium);
     }
   }
